@@ -12,12 +12,13 @@ Date:
 created a swap function to swap elements in a vector
 """
 def swap(input, idx_A, idx_B):
-    temp_idx = idx_A
+    temp_idx = input[idx_A]
     input[idx_A] = input[idx_B]
     input[idx_B] = temp_idx
     return input
 
-
+x = [1,2,3,4,5]
+swap(x,2,4)
 """
 SelectionSort
 Step 1: Separate the array into "sorted" and "unsorted" components.
