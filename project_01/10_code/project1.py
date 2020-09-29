@@ -9,6 +9,16 @@ Date:
 """
 
 """
+created a swap function to swap elements in a vector
+"""
+def swap(input, idx_A, idx_B):
+    temp_idx = idx_A
+    input[0] = input[idx_B]
+    input[idx_B] = temp_idx
+    return input
+
+
+"""
 SelectionSort
 Step 1: Separate the array into "sorted" and "unsorted" components.
     -> initially, the entire ray is "unsorted" and the "sorted" component is empty
@@ -31,7 +41,7 @@ def SelectionSort(listToSort):
     sorted = []
     unsorted = []
     for value in listToSort:
-        
+
     return listToSort
 
 
