@@ -17,8 +17,6 @@ def swap(input, idx_A, idx_B):
     input[idx_B] = temp_idx
     return input
 
-x = [1,2,3,4,5]
-swap(x,2,4)
 """
 SelectionSort
 Step 1: Separate the array into "sorted" and "unsorted" components.
@@ -39,12 +37,20 @@ Best/Average/Worst Case:
 n + (n − 1) + (n − 2) + · · · + 2 + 1 ∈ O(n^2)
 """
 def SelectionSort(listToSort):
-    sorted = []
-    unsorted = []
-    for value in listToSort:
+    for current_idx in range(len(listToSort)):
+        k = current_idx #counter of which index the pointer is on
 
+        for idx in range(k+1,len(listToSort)):
+            #print(listToSort[current_idx])
+            #print(listToSort[idx])
+            if listToSort[k]>listToSort[idx]:
+                listToSort[k], listToSort[idx] = listToSort[idx], listToSort[k] #swapping of values
+                #print("swap")
+            elif listToSort[current_idx]==listToSort[idx]:
+                pass
+            else:
+                pass
     return listToSort
-
 
 """
 InsertionSort
