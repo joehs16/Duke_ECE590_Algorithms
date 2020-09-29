@@ -13,7 +13,7 @@ created a swap function to swap elements in a vector
 """
 def swap(input, idx_A, idx_B):
     temp_idx = idx_A
-    input[0] = input[idx_B]
+    input[idx_A] = input[idx_B]
     input[idx_B] = temp_idx
     return input
 
