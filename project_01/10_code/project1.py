@@ -12,15 +12,16 @@ Date:
 created a swap function to swap elements in a vector
 """
 def swap(input, idx_A, idx_B):
-    temp_idx = input[idx_A]
-    input[idx_A] = input[idx_B]
-    input[idx_B] = temp_idx
+    input[idx_A], input[idx_B] = input[idx_B], input[idx_A]
     return input
 
+x = [1,2,3,4]
+swap(x,0,2)
 """
 SelectionSort
 Step 1: Separate the array into "sorted" and "unsorted" components.
-    -> initially, the entire ray is "unsorted" and the "sorted" component is empty
+    -> initially, the entire array is "unsorted" and the "sorted" component is
+    empty
 Step 2: Store the index separating the "sorted" and "unsorted" compnents.
     -> initally, K=0
 Step 3: Search the "unsorted" component for the minimum element.
@@ -37,19 +38,17 @@ Best/Average/Worst Case:
 n + (n − 1) + (n − 2) + · · · + 2 + 1 ∈ O(n^2)
 """
 def SelectionSort(listToSort):
-    for current_idx in range(len(listToSort)):
-        k = current_idx #counter of which index the pointer is on
-
-        for idx in range(k+1,len(listToSort)):
+    for current_idx in range(len(listToSort)):                                  # loop through each value in the list
+        k = current_idx                                                         # pointer for the current index of the list
+        for idx in range(k+1,len(listToSort)):                                  # this loop compares each unsorted value to the current pointer
             #print(listToSort[current_idx])
             #print(listToSort[idx])
-            if listToSort[k]>listToSort[idx]:
-                listToSort[k], listToSort[idx] = listToSort[idx], listToSort[k] #swapping of values
+            if listToSort[k]>listToSort[idx]:                                   # if the unsorted value is smaller than the current pointer, swap
+                listToSort[k], listToSort[idx] = listToSort[idx], listToSort[k] # swapping code
                 #print("swap")
-            elif listToSort[current_idx]==listToSort[idx]:
+            else:                                                               # if the values are LEQ, then dont do anything
                 pass
-            else:
-                pass
+        pass
     return listToSort
 
 """
