@@ -41,11 +41,8 @@ def SelectionSort(listToSort):
     for current_idx in range(len(listToSort)):                                  # loop through each value in the list
         k = current_idx                                                         # pointer for the current index of the list
         for idx in range(k+1,len(listToSort)):                                  # this loop compares each unsorted value to the current pointer
-            #print(listToSort[current_idx])
-            #print(listToSort[idx])
-            if listToSort[k]>listToSort[idx]:                                   # if the unsorted value is smaller than the current pointer, swap
-                listToSort[k], listToSort[idx] = listToSort[idx], listToSort[k] # swapping code
-                #print("swap")
+            if listToSort[k]>listToSort[idx]:                                   # if the unsorted value is smaller than the current pointer, swap.
+                listToSort[k], listToSort[idx] = listToSort[idx], listToSort[k] # swapping indexes
             else:                                                               # if the values are LEQ, then dont do anything
                 pass
         pass
@@ -64,14 +61,37 @@ front of the array.
     - Search backwards (starting at position k) through the sorted component until
 we find where the element should go.
     - Shift the remaining sorted elements 1 index to the right.
-    - Insert the element in that position. I Increment the index k.
+    - Insert the element in that position.
+    - Increment the index k.
 
 Note: this insertion process can also be accomplished with “bubbling”, where we
 swap the k + 1 element with the preceding element until it is in the correct location.
 
 """
 def InsertionSort(listToSort):
-    return listToSort
+    for current_idx in range(len(listToSort)-1):
+        k = current_idx
+        #print(listToSort)
+        #print(f"pointer is at idx {k}  (value: {listToSort[k]})")
+
+        if listToSort[k]>listToSort[k+1]:
+            #print(f"swap {k} (value: {listToSort[k]}) and {k+1} (value: {listToSort[k+1]})")
+            listToSort[k], listToSort[k+1] = listToSort[k+1], listToSort[k] #swapping of values
+                #check if new k can move more left
+            #for bubble in range(j):
+            j = k
+            while j>0 and listToSort[j]<listToSort[j-1]:
+                #print(f"swap {j} (value: {listToSort[j]}) and {j-1} (value: {listToSort[j-1]})")
+                listToSort[j], listToSort[j-1] = listToSort[j-1], listToSort[j] #swapping of values
+                j = j-1
+            else:                                                               # if the values are LEQ, then dont do anything
+                pass
+        else:                                                               # if the values are LEQ, then dont do anything
+            pass
+    return(listToSort)
+
+x = [1,2,4,5,2,6,-4,5,3,1]
+InsertionSort(x)
 
 """
 BubbleSort
@@ -82,6 +102,22 @@ BubbleSort
 
 """
 def BubbleSort(listToSort):
+    n = 0
+    while n<len(listToSort):
+        print(f'--loop {n}--')
+        x = 0
+        while x<(len(listToSort)-1):
+            print(f'index: {x}, current list: {listToSort}')
+            if listToSort[x]>listToSort[x+1]:
+                print(f"> SWAP b/c index {x} and index {x+1} (values: {listToSort[x]} > {listToSort[x+1]})")
+                listToSort[x], listToSort[x+1] = listToSort[x+1], listToSort[x]
+                print(f'New list: {listToSort}')
+                x += 1
+            else:
+                print(f"> NO SWAP b/c index {x} LEQ index {x+1} (values : {listToSort[x+1]} <= {listToSort[x+1]})")
+                x += 1
+            pass
+        n += 1
     return listToSort
 
 """
