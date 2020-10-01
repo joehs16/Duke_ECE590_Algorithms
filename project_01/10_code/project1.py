@@ -3,143 +3,133 @@ Math 560
 Project 1
 Fall 2020
 
-Partner 1: Sutianyi (Bill) Wen
-Partner 2: Joseph Hsieh
+Partner 1:
+Partner 2:
 Date:
 """
 
 """
-created a swap function to swap elements in a vector
-"""
-def swap(input, idx_A, idx_B):
-    temp_idx = input[idx_A]
-    input[idx_A] = input[idx_B]
-    input[idx_B] = temp_idx
-    return input
-
-"""
 SelectionSort
-Step 1: Separate the array into "sorted" and "unsorted" components.
-    -> initially, the entire ray is "unsorted" and the "sorted" component is empty
-Step 2: Store the index separating the "sorted" and "unsorted" compnents.
-    -> initally, K=0
-Step 3: Search the "unsorted" component for the minimum element.
-Step 4: Swap this minimum element with the element at index k and increment k
-
-note: This algorithm performs the same regardless of the input,
-so there is no difference between best and worst cases.
-
-To fill the kth element of our sorted array, we must ﬁnd the smallest of the
-remaining n-k unsorted elements
-This happens for every k = 0 ... n-1
-
-Best/Average/Worst Case:
-n + (n − 1) + (n − 2) + · · · + 2 + 1 ∈ O(n^2)
 """
 def SelectionSort(listToSort):
-    for current_idx in range(len(listToSort)):
-        k = current_idx #counter of which index the pointer is on
-
-        for idx in range(k+1,len(listToSort)):
-            #print(listToSort[current_idx])
-            #print(listToSort[idx])
-            if listToSort[k]>listToSort[idx]:
-                listToSort[k], listToSort[idx] = listToSort[idx], listToSort[k] #swapping of values
-                #print("swap")
-            elif listToSort[current_idx]==listToSort[idx]:
-                pass
-            else:
-                pass
+    # Index of sorted
+    length = len(listToSort)
+    for i in range (length):
+        min_index = i
+        for j in range(i+1,length):
+            if listToSort[j] < listToSort[min_index]:
+                min_index = j
+                pass 
+            pass
+        temp = listToSort[i]
+        listToSort[i] = listToSort[min_index]
+        listToSort[min_index] = temp
+        pass
     return listToSort
 
 """
 InsertionSort
-
-1. Separate the array into a sorted component and an
-unsorted component.
-    Originally, the entire array is unsorted, and the sorted component is empty.
-2. Store the index separating the sorted and unsorted components starting at the
-front of the array.
-    So k = 0 originally.
-3. Iteratively insert the element at k + 1 into the sorted component.
-    - Search backwards (starting at position k) through the sorted component until
-we find where the element should go.
-    - Shift the remaining sorted elements 1 index to the right.
-    - Insert the element in that position. I Increment the index k.
-
-Note: this insertion process can also be accomplished with “bubbling”, where we
-swap the k + 1 element with the preceding element until it is in the correct location.
-
 """
 def InsertionSort(listToSort):
+    length = len(listToSort)
+    for i in range(1,length):
+        while i-1>= 0 and listToSort[i] < listToSort[i-1]:
+            temp = listToSort[i]
+            listToSort[i] = listToSort[i-1]
+            listToSort[i-1] = temp
+            i-=1
+            pass
+        pass
     return listToSort
-
 """
 BubbleSort
-1. Iterate through the array.
-2. Compare every two adjacent elements.
-3. If they are out of order, swap them.
-4. Repeat until no more swaps are made.
-
 """
 def BubbleSort(listToSort):
+    length = len(listToSort)
+    i = 0
+    for i in range (length-1-i):
+        j = 0
+        for j in range(length-1-j):
+            if listToSort[j] > listToSort[j+1]:
+                temp = listToSort[j]
+                listToSort[j] = listToSort[j+1]
+                listToSort[j+1] = temp
+                pass
+            pass
+        pass  
     return listToSort
-
 """
 MergeSort
-
-Divide & Conquer Approach
-Base Cases:
-    - If the array has 1 element, it is sorted.
-    - If the array has 2 elements, swap if needed and return.
-
-1. Split the array into two halves.
-2. Recursively sort each half.
-3. Merge the already sorted halves.
-    - Iterate through them simultaneously.
-    - Compare their smallest elements.
-    - The smaller of the two gets removed and inserted into the
-merged array.
-    - This merge takes O(n) time when merging two arrays of
-size n/2.
-
-
 """
 def MergeSort(listToSort):
-    return listToSort
-
+    length = len(listToSort)
+    if length == 1:
+        return listToSort
+    else:
+        split = length//2
+        left = MergeSort(listToSort[:split])
+        #print(left)
+        right = MergeSort(listToSort[split:])
+        #print(right)
+        merged = []
+        while left and right:
+            num_left,num_right = left[0],right[0]
+            if num_left < num_right:
+                merged.append(num_left)
+                left.pop(0)
+                pass
+            else:
+                merged.append(num_right)
+                right.pop(0)
+                pass
+            pass
+        while left:
+            merged.append(left[0])
+            left.pop(0)
+            pass
+        while right:
+            merged.append(right[0])
+            right.pop(0)
+            pass
+    return merged
 """
 QuickSort
-    - Base Cases: If the array has 1 element, it is sorted.
-    - Choose a pivot element.
-    - Partition the array based on the pivot. Put everything
-smaller than the pivot in front and everything larger than
-the pivot in back. O(n)
-    - Recurse on each partition.
-
-Note that it is always best to split the array in half because
-this minimizes the size of the largest recursive call. This will
-depend on our choice of pivot.
-
-How do we choose the pivot?
-- Pick the first element in the list. This works very poorly on
-already sorted inputs.
-- Pick the last element in the list. This also works very poorly
-on already sorted inputs.
-- Pick a random element in the list.
-- Partition based on the median of the first, last, and middle
-elements.
-
 
 Sort a list with the call QuickSort(listToSort),
 or additionally specify i and j.
 """
-def QuickSort(listToSort, i=0, j=None):
-    # Set default value for j if None.
-    if j == None:
-        j = len(listToSort)
-    return listToSort
-
+def QuickSort(listToSort):
+    length = len(listToSort)
+    if length <= 1:
+        return listToSort
+    else:
+        # Last num is the pivot
+        pivot = listToSort[-1]
+        #print(pivot)
+        #Partition
+        left_index, right_index = 0,len(listToSort)-2
+        while True:
+            while listToSort[left_index] < pivot:
+                left_index+=1
+                continue
+            while listToSort[right_index] > pivot:
+                right_index-=1
+                continue
+            if left_index >= right_index:
+                break
+            else:
+                left_num = listToSort[left_index]
+                right_num = listToSort[right_index]
+                listToSort[left_index] = right_num
+                listToSort[right_index] = left_num
+        temp = listToSort[left_index]
+        listToSort[left_index] = pivot
+        listToSort[-1] = temp
+        #print(listToSort[:left_index])
+        #print(listToSort[left_index:])
+        left = QuickSort(listToSort[:left_index])
+        right = QuickSort(listToSort[left_index:])
+    return left+right
 """
 Importing the testing code after function defs to ensure same references.
 """
