@@ -11,6 +11,7 @@ Date:
 """
 SelectionSort
 """
+
 def SelectionSort(listToSort):
     # Index of sorted
     length = len(listToSort)
@@ -91,14 +92,15 @@ def MergeSort(listToSort):
             merged.append(right[0])
             right.pop(0)
             pass
-    return merged
+    listToSort[:] = merged[:]
+    return listToSort
 """
 QuickSort
 
 Sort a list with the call QuickSort(listToSort),
 or additionally specify i and j.
 """
-def QuickSort(listToSort):
+def QuickSort(listToSort,i=None,j=None):
     length = len(listToSort)
     if length <= 1:
         return listToSort
@@ -109,10 +111,10 @@ def QuickSort(listToSort):
         #Partition
         left_index, right_index = 0,len(listToSort)-2
         while True:
-            while listToSort[left_index] < pivot:
+            while listToSort[left_index] <= pivot and left_index < len(listToSort)-1:
                 left_index+=1
                 continue
-            while listToSort[right_index] > pivot:
+            while listToSort[right_index] >= pivot and right_index > 0:
                 right_index-=1
                 continue
             if left_index >= right_index:
@@ -125,11 +127,10 @@ def QuickSort(listToSort):
         temp = listToSort[left_index]
         listToSort[left_index] = pivot
         listToSort[-1] = temp
-        #print(listToSort[:left_index])
-        #print(listToSort[left_index:])
         left = QuickSort(listToSort[:left_index])
         right = QuickSort(listToSort[left_index:])
-    return left+right
+    listToSort[:]=left+right
+    return listToSort
 """
 Importing the testing code after function defs to ensure same references.
 """
