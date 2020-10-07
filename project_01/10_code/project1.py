@@ -47,16 +47,19 @@ BubbleSort
 """
 def BubbleSort(listToSort):
     length = len(listToSort)
-    i = 0
-    for i in range (length-1-i):
+    swapped = False
+    for i in range (length):
         j = 0
         for j in range(length-1-j):
             if listToSort[j] > listToSort[j+1]:
                 temp = listToSort[j]
                 listToSort[j] = listToSort[j+1]
                 listToSort[j+1] = temp
+                swapped = True
                 pass
             pass
+        if not swapped:
+            return listToSort
         pass  
     return listToSort
 """
@@ -111,7 +114,7 @@ def QuickSort(listToSort,i=None,j=None):
         #Partition
         left_index, right_index = 0,len(listToSort)-2
         while True:
-            while listToSort[left_index] <= pivot and left_index < len(listToSort)-1:
+            while listToSort[left_index] <= pivot and left_index < length -1:
                 left_index+=1
                 continue
             while listToSort[right_index] >= pivot and right_index > 0:
@@ -120,16 +123,14 @@ def QuickSort(listToSort,i=None,j=None):
             if left_index >= right_index:
                 break
             else:
-                left_num = listToSort[left_index]
-                right_num = listToSort[right_index]
-                listToSort[left_index] = right_num
-                listToSort[right_index] = left_num
+                temp = listToSort[left_index]
+                listToSort[left_index] = listToSort[right_index]
+                listToSort[right_index] = temp
+
         temp = listToSort[left_index]
         listToSort[left_index] = pivot
         listToSort[-1] = temp
-        left = QuickSort(listToSort[:left_index])
-        right = QuickSort(listToSort[left_index:])
-    listToSort[:]=left+right
+        listToSort[:]= QuickSort(listToSort[:left_index])+QuickSort(listToSort[left_index:])
     return listToSort
 """
 Importing the testing code after function defs to ensure same references.
@@ -163,3 +164,4 @@ if __name__ == "__main__":
     print('DEFAULT measureTime')
     print()
     measureTime()
+
