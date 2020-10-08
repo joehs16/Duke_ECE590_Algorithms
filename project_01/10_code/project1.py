@@ -3,9 +3,9 @@ Math 560
 Project 1
 Fall 2020
 
-Partner 1:
-Partner 2:
-Date:
+Partner 1: Sutianyi Wen
+Partner 2: Joseph Hsieh
+Date: October 9th, 2020
 """
 
 """
@@ -21,7 +21,7 @@ def SelectionSort(listToSort):
         for j in range(i+1,length):
             if listToSort[j] < listToSort[min_index]:
                 min_index = j
-                pass 
+                pass
             pass
          # Swapping
         temp = listToSort[i]
@@ -64,8 +64,13 @@ def BubbleSort(listToSort):
                 pass
             pass
         if not swapped:
+<<<<<<< HEAD
            	return listToSort
         pass  
+=======
+            return listToSort
+        pass
+>>>>>>> ad7c7740d715e8d7a9b79bb6fab93d13d381f9a7
     return listToSort
 """
 MergeSort
@@ -180,4 +185,7 @@ if __name__ == "__main__":
     print('DEFAULT measureTime')
     print()
     measureTime()
+<<<<<<< HEAD
     measureTime(True)
+=======
+>>>>>>> ad7c7740d715e8d7a9b79bb6fab93d13d381f9a7
