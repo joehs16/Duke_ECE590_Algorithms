@@ -64,13 +64,8 @@ def BubbleSort(listToSort):
                 pass
             pass
         if not swapped:
-<<<<<<< HEAD
            	return listToSort
         pass  
-=======
-            return listToSort
-        pass
->>>>>>> ad7c7740d715e8d7a9b79bb6fab93d13d381f9a7
     return listToSort
 """
 MergeSort
@@ -185,7 +180,4 @@ if __name__ == "__main__":
     print('DEFAULT measureTime')
     print()
     measureTime()
-<<<<<<< HEAD
     measureTime(True)
-=======
->>>>>>> ad7c7740d715e8d7a9b79bb6fab93d13d381f9a7
