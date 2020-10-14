@@ -9,10 +9,16 @@ Partner 1:
 Partner 2:
 Date:
 """
+import os
+
+os.getcwd()
+os.chdir('../../project_02/00_source')
+os.getcwd()
 
 # Import math and other p2 files.
 import math
 from p2tests import *
+
 
 """
 BFS/DFS function
@@ -32,6 +38,8 @@ def bdfs(maze, alg):
     ##### Your implementation goes here. #####
     return []
     ##### Your implementation goes here. #####
+
+Stack(5)
 
 """
 Main function.

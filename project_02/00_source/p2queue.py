@@ -49,6 +49,7 @@ class Queue:
     isFull function to check if the queue is full.
     """
     def isFull(self):
+        #compares the elements in the array to the length of the array
         if self.numElems == len(self.queue):
             return True
         else:
@@ -68,15 +69,27 @@ class Queue:
     Note: we also reset the front to index 0.
     """
     def resize(self):
+        #note: will only resize if array is full
         if self.isFull() == True:
+            #considering cases when not in order.
             if self.rear == self.front and self.rear != 0:
                 #print('the front array is ', self.queue[self.front:])
                 #print('the rear array is ', self.queue[:self.rear])
-                self.queue =  self.queue[self.front:] + self.queue[:self.rear] + [None for x in self.queue]
-                self.front = 0 #reset location of pointer
-                self.rear = self.numElems #reset location of pointer
+                #rearranges the array so that index 0 is at front of the array
+                #then doubles the queue
+                self.queue = self.queue[self.front:] + \
+                    self.queue[:self.rear] + [None for x in self.queue]
+
+
+                #reset location of pointers
+                self.front = 0
+                self.rear = self.numElems
+
+            #this case is for when the array is in order starting from 0
             else:
                 #print("the resize function is going here")
+
+                #set location of rear pointer
                 self.rear = self.numElems
                 self.queue =  self.queue + [None for x in self.queue]
         return
@@ -85,11 +98,16 @@ class Queue:
     push function to push a value into the rear of the queue.
     """
     def push(self, val):
+        #if queue is full, increase size first
         if self.isFull() == True:
             self.resize()
+
+        #insert value
         self.queue[self.rear] = val
+        #update counter
         self.numElems = self.numElems + 1
-        if self.rear == len(self.queue)-1: #if at end of array
+        #update rear pointer, taking into account of being at the end of array
+        if self.rear == len(self.queue)-1:
             self.rear = 0
         else:
             self.rear = self.rear + 1
@@ -99,80 +117,84 @@ class Queue:
     pop function to pop the value from the front of the queue.
     """
     def pop(self):
+        #handles null case
         if self.isEmpty() == True:
-            #print("Array is empty.")
+            #print(">> Array is empty.")
             return
         else:
+            #stores pop value then replaces it with None
             popVal = self.queue[self.front]
             self.queue[self.front] = None
-            if self.front == len(self.queue)-1: #if at end of array
-                self.front = 0 #go to the front
+
+            #update front pointer, taking into account of end of array
+            if self.front == len(self.queue)-1:
+                self.front = 0
             else:
                 self.front = self.front + 1
+
+            #update element
             self.numElems = self.numElems - 1
             return popVal
-# def test():
-#     test = Queue()
-#     print(test)
-#     test.push(1)
-#     print(test)
-#     test.push(2)
-#     print(test)
-#     test.pop()
-#     print(test)
-#     test.push(3)
-#     print(test)
-#
-#     test.push(4)
-#     print(test)
-#     test.resize()
-#     print(test)
-#
-#
-#     test.push(5)
-#
-#     print(test)
-#     test.push(6)
-#     print(test)
-#     test.push(7)
-#     print(test)
-#     test.push(8)
-#     print(test)
-#     test.pop()
-#     print(test)
-#     test.pop()
-#     test.pop()
-#     test.pop()
-#     test.pop()
-#     test.pop()
-#     test.pop()
-#     test.pop()
-#     print()
-#     test.push(1)
-#     print(test)
-#     test.pop()
-#     print(test)
-#     test.push(1)
-#     test.push(2)
-#     test.push(3)
-#     test.push(4)
-#     test.push(5)
-#     print(test)
-#     test.resize()
-#     print(test)
-#     test.push(6)
-#     test.push(7)
-#     test.push(8)
-#     test.push(9)
-#     test.push(10)
-#     print(test)
-#     test.push(11)
-#     test.push(12)
-#     print(test)
-#     test.push(13)
-#     print(test)
-#     for x in range(14):
-#         test.pop()
-#     print(test)
 
-#test()
+
+def test():
+    test = Queue()
+    print(test)
+    test.push(1)
+    print(test)
+    test.push(2)
+    print(test)
+    test.pop()
+    print(test)
+    test.push(3)
+    print(test)
+    test.push(4)
+    print(test)
+    test.resize()
+    print(test)
+    test.push(5)
+    print(test)
+    test.push(6)
+    print(test)
+    test.push(7)
+    print(test)
+    test.push(8)
+    print(test)
+    test.pop()
+    print(test)
+    test.pop()
+    test.pop()
+    test.pop()
+    test.pop()
+    test.pop()
+    test.pop()
+    test.pop()
+    print()
+    test.push(1)
+    print(test)
+    test.pop()
+    print(test)
+    test.push(1)
+    test.push(2)
+    test.push(3)
+    test.push(4)
+    test.push(5)
+    print(test)
+    test.resize()
+    print(test)
+    test.push(6)
+    test.push(7)
+    test.push(8)
+    test.push(9)
+    test.push(10)
+    print(test)
+    test.push(11)
+    test.push(12)
+    print(test)
+    test.push(13)
+    print(test)
+    for x in range(14):
+        test.pop()
+    print(test)
+#
+# test()

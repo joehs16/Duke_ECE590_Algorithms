@@ -22,7 +22,7 @@ class Vertex:
 
     """
     Class attributes:
-    
+
     rank    # The rank of this node.
     neigh   # The list of neighbors.
     dist    # The distance from start.
@@ -57,7 +57,7 @@ class Vertex:
         return self.rank == vertex.rank
 
 ################################################################################
-    
+
 """
 Maze Class
 """
@@ -115,7 +115,7 @@ class Maze:
                         # Update the correct entry in the adjMat.
                         self.adjMat[r*len(self.maze[0])+c]\
                                    [(r-1)*len(self.maze[0])+c] = 1
-                        
+
                     # If down is open, it is a neighbor.
                     if self.maze[r+1][c] == 0:
                         # Append the neighbor to the neigh list.
@@ -125,7 +125,7 @@ class Maze:
                         # Update the correct entry in the adjMat.
                         self.adjMat[r*len(self.maze[0])+c]\
                                    [(r+1)*len(self.maze[0])+c] = 1
-                        
+
                     # If left is open, it is a neighbor.
                     if self.maze[r][c-1] == 0:
                         # Append the neighbor to the neigh list.
@@ -135,7 +135,7 @@ class Maze:
                         # Update the correct entry in the adjMat.
                         self.adjMat[r*len(self.maze[0])+c]\
                                    [r*len(self.maze[0])+c-1] = 1
-                        
+
                     # If right is open, it is a neighbor.
                     if self.maze[r][c+1] == 0:
                         # Append the neighbor to the neigh list.
@@ -194,7 +194,7 @@ class Maze:
         # warn is the string for any warnings/errors!
         mp = ''
         warn = ''
-        
+
         # Loop through the rows and cols of the maze and fill in 'X' for a wall
         # and ' ' for an open space. Put line breaks between rows.
         for r in range(0,len(self.maze)):
@@ -218,7 +218,7 @@ class Maze:
 
             # Not an invalid path yet...
             invalid = False
-            
+
             # Needs to start at start and end at end.
             if self.path[0] != self.start.rank:
                 warn += 'Path does not begin at start!\n'
@@ -305,7 +305,7 @@ class Maze:
         if self.verb == False:
             return
         (warn, mp) = self.printMaze()
-        np_mz = []   
+        np_mz = []
         row_mz = []
         possible_value = ['X',' ','o','s','e','G','R']
         for i in mp:
@@ -346,7 +346,7 @@ class Maze:
         return
 
 ################################################################################
-    
+
 """
 getMaze function will provide the 2D array representing the maze to the Maze
 class's __init__ function.

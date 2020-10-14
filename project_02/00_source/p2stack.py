@@ -70,9 +70,9 @@ class Stack:
     resize function to resize the stack by doubling its size.
     """
     def resize(self):
-        ##### IMPLEMENT! #####
-        self.stack = self.stack + [None for x in range(len(test.stack))]
-        return
+        if self.isFull() == True:
+            self.stack = self.stack + [None for x in range(len(test.stack))]
+            return
 
     """
     push function to push a value onto the stack.
