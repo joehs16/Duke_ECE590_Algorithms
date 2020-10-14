@@ -3,8 +3,8 @@ Math 560
 Project 1
 Fall 2020
 
-Partner 1: Sutianyi Wen
-Partner 2: Joseph Hsieh
+Partner 1: Sutianyi Wen (sw490)
+Partner 2: Joseph Hsieh (jch122)
 Date: October 9th, 2020
 """
 
@@ -41,9 +41,9 @@ def InsertionSort(listToSort):
         temp = listToSort[i]
         while i-1 >= 0 and temp < listToSort[i-1]:
           listToSort[i] = listToSort[i-1]
-          # looks left  
+          # looks left
           i-=1
-        listToSort[i] = temp	
+        listToSort[i] = temp
     return listToSort
 """
 BubbleSort
@@ -51,7 +51,7 @@ BubbleSort
 def BubbleSort(listToSort):
     length = len(listToSort)
     swapped = False
-    # Traverse each element 
+    # Traverse each element
     for i in range (length):
     	# Continuously shrink the window size
         for j in range(length-1-i):
@@ -65,7 +65,7 @@ def BubbleSort(listToSort):
             pass
         if not swapped:
            	return listToSort
-        pass  
+        pass
     return listToSort
 """
 MergeSort
@@ -115,7 +115,7 @@ def QuickSort(listToSort,i=None,j=None):
     if length <= 1:
         return listToSort
     else:
-        # randomly pick a pivot and swap it with the last element 
+        # randomly pick a pivot and swap it with the last element
         # it's better then directly picking the last index as pivot for sorted input
         pivot_index = random.randint(0,len(listToSort)-1)
         temp = listToSort[pivot_index]
@@ -136,7 +136,7 @@ def QuickSort(listToSort,i=None,j=None):
             # Left meet right, break
             if left_index >= right_index:
                 break
-            # swap 
+            # swap
             else:
                 temp = listToSort[left_index]
                 listToSort[left_index] = listToSort[right_index]
