@@ -24,17 +24,6 @@ def SelectionSort(listToSort):
                 pass
     return listToSort
 
-x = [3,2,2,17,1,3,4,5]
-x = [5,4,3,2,1]
-SelectionSort(x)
-
-x = [2,3,4,5,1]
-x[-5]
-x[-len(x)]
-for value in range(len(x)):
-    print('value is ' + str(value+1))
-    print(x[-(value+1)])
-
 def InsertionSort(listToSort):
         for current_idx in range(len(listToSort)):                                  # loop through each value in the list
             k = current_idx                                                         # pointer for the current index of the list

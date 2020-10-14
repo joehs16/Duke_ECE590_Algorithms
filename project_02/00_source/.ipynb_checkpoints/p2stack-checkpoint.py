@@ -78,29 +78,69 @@ class Stack:
     push function to push a value onto the stack.
     """
     def push(self, val):
-        if self.isFull() == False:
-            self.top = self.top + 1
-            self.stack[self.top] = val
-            self.numElems = self.numElems + 1
+        if self.isFull == False:
+            # self.top = self.top + 1
+            # self.stack[self.top] = val
+            # self.numElems = self.numElems + 1
+            print('NOT FULL')
         else:
-
-            print('>> Out of space in the array. Resizing.')
+            print('>>TRUE')
+            print('>> Stack is full, resizing...')
             self.resize()
-            self.top = self.top + 1
-            self.stack[self.top] = val
-            self.numElems = self.numElems + 1
+        print('>>after if/else')
+
+
+        ##### IMPLEMENT! #####
+        return
 
     """
     pop function to pop the value off the top of the stack.
     """
-    def pop(self):
-        if self.top >= 0:
-            popVal = self.stack[self.top]
-            self.stack[self.top] = None
-            self.numElems = self.numElems - 1
-            self.top = self.top - 1
+    # def pop(self):
+    #     if self.isEmpty == True:
+    #         print('>> Stack is empty.')
+    #         return
+    #
+    #     else:
+    #
+    #     ##### IMPLEMENT! #####
+    #     ch = self.stack[self.numElems - 1]
+    #     del(self.stack[-1])
+    #     self.numElems = self.numElems - 1
+    #     return ch
 
-            return popVal
-        else:
-            print('>> Stack is empty.')
-            return
+
+test = Stack()
+test.isFull()
+test.isEmpty()
+len(test.stack)
+print(test)
+test.push(1)
+test.push(1)
+test.push(1)
+
+test.numElems
+len(test.stack)
+
+test.isFull()
+print(test)
+test.push(1)
+test.resize()
+test.push(2)
+print(test)
+
+
+len(test.stack)
+
+
+print(test)
+
+test.push(99)
+print(test)
+test.push(55)
+print(test)
+
+blue = True
+
+if blue == True:
+    print('Blue')
