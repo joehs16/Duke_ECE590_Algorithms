@@ -10,9 +10,7 @@ Partner 2:
 Date:
 """
 import os
- os.getcwd()
- os.chdir('../../project_02/00_source')
-# os.getcwd()
+os.getcwd()
 
 # Import math and other p2 files.
 import math
@@ -59,9 +57,7 @@ def bdfs(maze, alg):
             path.append(exit_v.prev)
             exit_v = maze.adjList[exit_v.prev]
         return path
-    ##### Your implementation goes here. #####
-    return []
-    ##### Your implementation goes here. #####
+
 
 """
 Main function.
