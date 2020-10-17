@@ -149,11 +149,11 @@ class Maze:
         # Find the start in the top row and exit in the bottom row.
         # Update their info in the adjList and adjMat.
         # Note: start's only neighbor is down and exit's is up.
-        for ind in range(0,len(self.maze[0])):
+        for ind in range(0,len(self.maze[0])): ## every column in the first row
             if self.maze[0][ind] == 0:
                 self.start = self.adjList[ind]
-                self.start.neigh = [self.adjList[ind + len(self.maze[0])]]
-                self.adjMat[ind][ind + len(self.maze[0])] = 1
+                self.start.neigh = [self.adjList[ind + len(self.maze[0])]] ##gives the locations that you can go
+                self.adjMat[ind][ind + len(self.maze[0])] = 1 ##means that you can go to the location
                 break
         for ind in range(0,len(self.maze[len(self.maze)-1])):
             if self.maze[len(self.maze)-1][ind] == 0:

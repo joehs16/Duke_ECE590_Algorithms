@@ -10,9 +10,6 @@ Partner 2:
 Date:
 """
 import os
-
-os.getcwd()
-os.chdir('../../project_02/00_source')
 os.getcwd()
 
 # Import math and other p2 files.
@@ -30,16 +27,37 @@ alg:  A string that is either 'BFS' or 'DFS'.
 OUTPUTS
 path: The shortest path from maze.start to maze.exit.
 """
+
 def bdfs(maze, alg):
     # If the alg is not BFS or DFS, raise exception.
     if (alg != 'BFS') and (alg != 'DFS'):
         raise Exception('Incorrect alg! Need BFS or DFS!')
+    # load start and exit
+    start_v = maze.start
+    exit_v = maze.exit
+    # Start BFS
+    if (alg == 'BFS'):
+        frontier = Queue()
+        start_v.dist = 0
+        frontier.push(start_v.rank)
+        while frontier.isEmpty()==False:
+            current = frontier.pop()
+            for neighbor in maze.adjList[current].neigh:
+                if neighbor.dist==math.inf:
+                    print(neighbor.rank)
+                    frontier.push(neighbor.rank)
+                    #print(frontier)
+                    neighbor.dist = maze.adjList[current].dist + 1
+                    neighbor.prev = current
+                    pass
+                pass
+            pass
+        path = []
+        while exit_v.prev != None:
+            path.append(exit_v.prev)
+            exit_v = maze.adjList[exit_v.prev]
+        return path
 
-    ##### Your implementation goes here. #####
-    return []
-    ##### Your implementation goes here. #####
-
-Stack(5)
 
 """
 Main function.

@@ -80,7 +80,7 @@ class Stack:
     """
     def push(self, val):
         if self.isFull():
-            print('>> Out of space in the array. Resizing.')
+            #print('>> Out of space in the array. Resizing.')
             self.resize()
         self.top = self.top + 1
         self.stack[self.top] = val
@@ -97,4 +97,3 @@ class Stack:
         self.stack[self.top] = None
         self.numElems = self.numElems - 1
         self.top = self.top - 1
-        
