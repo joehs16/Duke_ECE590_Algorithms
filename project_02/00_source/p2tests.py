@@ -17,6 +17,10 @@ testMazes function will test all of the mazes.
 """
 def testMazes(verbosity=False):
     m = Maze(0,verbosity)
+    print(m.maze)
+    return
+    #Original test case
+    m = Maze(0,verbosity)
     print('Testing Maze 0, DFS')
     m.solve('DFS',verbosity,False)
     print('Testing Maze 0, BFS')
