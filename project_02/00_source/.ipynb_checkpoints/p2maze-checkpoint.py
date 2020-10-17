@@ -338,7 +338,6 @@ class Maze:
     """
     def solve(self, alg, verbosity=True, plotting=True):
         self.path = bdfs(self, alg)
-        print("update path: ")
         if len(self.path) == 0:
             print('Maze not solved!\n')
         self.verb = verbosity
