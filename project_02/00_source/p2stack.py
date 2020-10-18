@@ -97,3 +97,4 @@ class Stack:
         self.stack[self.top] = None
         self.numElems = self.numElems - 1
         self.top = self.top - 1
+        return popVal
