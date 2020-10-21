@@ -32,6 +32,9 @@ def bdfs(maze, alg):
     # load start and exit
     start_v = maze.start
     exit_v = maze.exit
+    for ver in maze.adjList:
+        ver.dist = math.inf
+        ver.prev = None
     # Start BFS
     if(alg == 'BFS'):
         frontier = Queue()
