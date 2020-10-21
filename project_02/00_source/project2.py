@@ -32,18 +32,22 @@ def bdfs(maze, alg):
     # load start and exit
     start_v = maze.start
     exit_v = maze.exit
+    # Reset dist and prev before search
     for ver in maze.adjList:
         ver.dist = math.inf
         ver.prev = None
-    # Start BFS
+    # Use stack for DFS, queue for BFS
     if(alg == 'BFS'):
         frontier = Queue()
     if(alg == 'DFS'):
         frontier = Stack()
+    # Initialize distance for start to be 0
     start_v.dist = 0
     frontier.push(start_v.rank)
+    # while there are vertex to be explored, pop
     while frontier.isEmpty()==False:
         current = frontier.pop()
+        # update the distance for each neighbor and push to frontier
         for neighbor in maze.adjList[current].neigh:
             if neighbor.dist==math.inf:
                 frontier.push(neighbor.rank)
@@ -52,6 +56,7 @@ def bdfs(maze, alg):
                 pass
             pass
         pass
+    # insert prev in reversed order to produce path
     path = [exit_v.rank]
     while exit_v.prev != None:
         path.insert(0,exit_v.prev)
