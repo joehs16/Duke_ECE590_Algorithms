@@ -2,7 +2,6 @@
 Math 560
 Project 2
 Fall 2020
-
 p2tests.py
 """
 
@@ -38,7 +37,15 @@ def testMazes(verbosity=False):
     m.solve('DFS',verbosity,False)
     print('Testing Maze 3, BFS')
     m.solve('BFS',verbosity,False)
+
+    #maze 4
+    m = Maze(4,verbosity)
+    print('Testing Maze 4, DFS')
+    m.solve('DFS',verbosity,False)
+    print("DFS path: ",m.path)
+
+    print('Testing Maze 4, BFS')
+    m.solve('BFS',verbosity,False)
+    print("BFS path: ",m.path)
     plt.show()
     return
-
-################################################################################

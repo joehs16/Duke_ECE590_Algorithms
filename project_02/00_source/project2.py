@@ -5,9 +5,9 @@ Fall 2020
 
 project2.py
 
-Partner 1:
-Partner 2:
-Date:
+Partner 1: Joseph Hsieh
+Partner 2: Sutianyi Wen
+Date: 10/23/20
 """
 
 # Import math and other p2 files.
