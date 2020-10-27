@@ -109,7 +109,7 @@ class Currencies:
             if len(self.negCyc) < 2:
                 raise Exception('Invalid cycle: only 1 vertex')
             elif self.negCyc[0] != self.negCyc[-1]:
-                raise Exception('Invalid cycle: start != end')
+                raise Exception('Invalid cycle: No arbitrage in reported cycle! != end')
             else:
                 # There was a cycle, check to ensure arbitrage.
                 arb = 1
@@ -201,3 +201,5 @@ def getRates(exchangeNum):
         raise Exception('Input exchangeNum not valid!')
     
     return rates, currs
+
+
