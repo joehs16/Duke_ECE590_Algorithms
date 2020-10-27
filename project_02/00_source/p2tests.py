@@ -15,6 +15,7 @@ from p2maze import *
 testMazes function will test all of the mazes.
 """
 def testMazes(verbosity=False):
+    """
     m = Maze(0,verbosity)
     print('Testing Maze 0, DFS')
     m.solve('DFS',verbosity,False)
@@ -37,7 +38,7 @@ def testMazes(verbosity=False):
     m.solve('DFS',verbosity,False)
     print('Testing Maze 3, BFS')
     m.solve('BFS',verbosity,False)
-
+    """
     #maze 4
     m = Maze(4,verbosity)
     print('Testing Maze 4, DFS')

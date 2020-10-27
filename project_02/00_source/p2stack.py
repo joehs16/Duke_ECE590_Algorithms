@@ -5,9 +5,9 @@ Fall 2020
 
 p2stack.py
 
-Partner 1:
-Partner 2:
-Date:
+Partner 1: Joseph Hsieh
+Partner 2: Sutianyi Wen
+Date: 10/23/2020
 """
 
 """
