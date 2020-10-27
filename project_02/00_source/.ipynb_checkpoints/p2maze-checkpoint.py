@@ -8,7 +8,7 @@ p2Maze.py
 
 # Import math, other p2 files, plotting, and Wilson's.
 import math
-from project2 import *
+from project2 import bdfs
 import matplotlib.pyplot as plt
 from matplotlib import cm
 from matplotlib.colors import ListedColormap, LinearSegmentedColormap
@@ -338,10 +338,10 @@ class Maze:
     """
     def solve(self, alg, verbosity=True, plotting=True):
         self.path = bdfs(self, alg)
-        print("update path: ")
         if len(self.path) == 0:
             print('Maze not solved!\n')
         self.verb = verbosity
+        print(self)
         self.plot_maze_solution(plotting)
         return
 
