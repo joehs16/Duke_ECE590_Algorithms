@@ -41,8 +41,6 @@ def detectArbitrage(adjList, adjMat, tol=1e-15):
 				neighbor.prev = u
 
 	dist_2 = [vertex.dist for vertex in adjList]
-	print("dist_1: ",dist_1)
-	print("dist_2: ",dist_2)
 	# No negative cycle
 	track = None
 	for i in range(len(dist_1)):
@@ -54,14 +52,13 @@ def detectArbitrage(adjList, adjMat, tol=1e-15):
 	if track == None:
 		return []
 	else:
-		start = track
-		cur = track
+		visited = set()
 		cycle = []
-		cycle.append(start)
-		while cur.prev.isEqual(start)==False:
-			cycle.insert(0,cur.rank)
-			cur = cur.prev
-		cycle.insert(0,cur.prev.rank)
+		while track.prev.rank not in visited:
+			visited.add(track.prev.rank)
+			cycle.insert(0,track.prev.rank)
+			track = track.prev
+		cycle.insert(0,track.prev.rank)
 		return cycle
     ##### Your implementation goes here. #####
 
@@ -85,4 +82,4 @@ if __name__ == "__main__":
     #print(c.adjList)
     #print(c.adjMat)
     #cycle = detectArbitrage(c.adjList,c.adjMat)
-    #
+    #sprint(cycle)
