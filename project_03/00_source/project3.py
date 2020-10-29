@@ -3,8 +3,8 @@ Math 560
 Project 3
 Fall 2020
 
-Partner 1: Sutianyi Wen
-Partner 2: Joseph Hsieh
+Partner 1: Sutianyi Wen, sw490
+Partner 2: Joseph Hsieh, jch122
 Date: Date: 10/29/20
 """
 
