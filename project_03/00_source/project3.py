@@ -54,11 +54,15 @@ def detectArbitrage(adjList, adjMat, tol=1e-15):
 	else:
 		visited = set()
 		cycle = []
-		while track.prev.rank not in visited:
-			visited.add(track.prev.rank)
-			cycle.insert(0,track.prev.rank)
+		while track.rank not in visited:
+			visited.add(track.rank)
+			cycle.insert(0,track.rank)
 			track = track.prev
-		cycle.insert(0,track.prev.rank)
+		cycle.insert(0,track.rank)
+		i = -1
+		while cycle[i]!= cycle[0]:
+			cycle.pop(i)
+		print(cycle)
 		return cycle
     ##### Your implementation goes here. #####
 
