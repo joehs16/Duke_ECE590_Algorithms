@@ -68,16 +68,10 @@ def detectArbitrage(adjList, adjMat, tol=1e-15):
 
 	# account of the removal of vertices that were captured by track/
 	# marker but are not actually part of the negative cost cycle
-
 	else:
-		#visited = []
 		cycle = []
-
-		while track.rank not in cycle: ##modified to remove visited, because i think it was redundant
-			#visited.insert(0,track.rank)
-			##print("visited: ",visited)
+		while track.rank not in cycle: 
 			cycle.insert(0,track.rank)
-			##print("cycle: ", cycle)
 			track = track.prev
 		cycle.insert(0,track.rank)
 		i = -1
@@ -99,8 +93,3 @@ Main function.
 """
 if __name__ == "__main__":
     testRates()
-    #c = Currencies(0)
-    #print(c.adjList)
-    #print(c.adjMat)
-    #cycle = detectArbitrage(c.adjList,c.adjMat)
-    #sprint(cycle)
