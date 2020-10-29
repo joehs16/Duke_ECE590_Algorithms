@@ -38,7 +38,7 @@ def detectArbitrage(adjList, adjMat, tol=1e-15):
 					neighbor.prev = u
 	#create an instance of graph after Bellman-Ford Alg
 	dist_1 = [vertex.dist for vertex in adjList]
-
+	print({dist_1})
 	# Run for 1 extra iteration, if any values change, there is a negative /
 	# cost cycle
 	for u in adjList:
@@ -49,7 +49,7 @@ def detectArbitrage(adjList, adjMat, tol=1e-15):
 
 	#create an instance of graph after one more interation of Bellman-Ford
 	dist_2 = [vertex.dist for vertex in adjList]
-
+	print(dist_2)
 	# initialize a tracking variable to identify vertices that are within/
 	# the negative cost cycle, i.e. currencies that are part of the aribtrage
 	track = None
@@ -70,15 +70,18 @@ def detectArbitrage(adjList, adjMat, tol=1e-15):
 	# marker but are not actually part of the negative cost cycle
 	else:
 		cycle = []
-		while track.rank not in cycle: 
+		#in reverse, record the vertices in the negative cost cycle
+		while track.rank not in cycle:
 			cycle.insert(0,track.rank)
 			track = track.prev
+			print("In process: ", cycle)
+		#initialize the graph at dollar. start point elected at random
 		cycle.insert(0,track.rank)
 		i = -1
 		#removal of the upstream vertices not in the negative cost cycle
 		while cycle[i]!= cycle[0]:
 			cycle.pop(i)
-		print(cycle)
+		print("Negative Cost Cycle: ",cycle)
 		return cycle
 
 """
