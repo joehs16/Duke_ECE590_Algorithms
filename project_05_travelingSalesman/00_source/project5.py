@@ -174,7 +174,7 @@ if __name__ == "__main__":
     print(test_map)
     """
     verb = False # Set to true for more printed info.
-    #print('Testing Prim\n')
-    #print(testMaps(prim, verb))
+    print('Testing Prim\n')
+    print(testMaps(prim, verb))
     print('\nTesting Kruskal\n')
     print(testMaps(kruskal, verb))
