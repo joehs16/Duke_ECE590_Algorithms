@@ -3,9 +3,11 @@ Math 560
 Project 4
 Fall 2020
 
-Partner 1:
-Partner 2:
-Date:
+Partner 1: Sutianyi Wen
+NetID 1: sw490
+Partner 2: Joseph Hsieh
+NetID 2: jch122
+Date: 11/05/2020
 """
 
 # Import p4tests.
@@ -41,7 +43,7 @@ def ED(src, dest):
     # left to right, top to bottom.
     for i in range(1,len(src)+1):
         for j in range(1,len(dest)+1):
-            # [left/insert, down/delete, diagonal/sub_or_match]
+            # [horizontal/insert, vertical/delete, diagonal/sub_or_match]
             three_ops = [dp_table[i][j-1],dp_table[i-1][j],dp_table[i-1][j-1]]
             edit_cost = min(three_ops)
 
