@@ -27,7 +27,7 @@ def prim(adjList, adjMat):
         ver.cost = math.inf
         ver.prev = None
         ver.visited = False
-    # Pick an arbitrary vertex 
+    # Pick an arbitrary vertex
     start = adjList[2]
     start.cost = 0
     # Make priority queue
@@ -117,21 +117,45 @@ def union(u,v):
 """
 TSP
 """
+# def tsp(adjList, start):
+#     ##### Your implementation goes here. #####
+#     for ver in adjList:
+#         ver.visited = False
+#     tour = []
+#     stack = []
+#     tour.append(start.rank)
+#     stack.append(start)
+#     while not len(tour)!= 0:
+#         cur = stack.pop()
+#         for neighbor in cur.mstN:
+#             if neighbor.visited==False:
+#                 stack.append(neighbor)
+#                 tour.append(neighbor.rank)
+#                 neighbor.visited=True
+#     tour.append(start.rank)
+#     return tour
+
 def tsp(adjList, start):
-    ##### Your implementation goes here. #####
+     ##### Your implementation goes here. #####
     for ver in adjList:
         ver.visited = False
     tour = []
     stack = []
-    tour.append(start.rank)
     stack.append(start)
-    while not len(tour)!= 0:
+
+    while len(stack) != 0:
         cur = stack.pop()
-        for neighbor in cur.mstN:
-            if neighbor.visited==False:
+
+        if cur.visited == False:
+            cur.visited = True
+
+            tour.append(cur.rank)
+            for neighbor in cur.mstN:
                 stack.append(neighbor)
-                tour.append(neighbor.rank)
-                neighbor.visited=True
+            #     print('>>current vertex: ', cur)
+            #     print('>>neighbors: ', neighbor, 'rank', neighbor.rank)
+            #     print('>>stack: ', stack)
+            # print('>>tour: ', tour)
     tour.append(start.rank)
     return tour
 
@@ -147,10 +171,10 @@ if __name__ == "__main__":
     """
     test_map = Map(mapNum=1, MSTalg=kruskal)
     test_map.getMST()
-    print(test_map.mst)
+    print(test_map)
     """
-    verb = True # Set to true for more printed info.
-    print('Testing Prim\n')
-    print(testMaps(prim, verb))
+    verb = False # Set to true for more printed info.
+    #print('Testing Prim\n')
+    #print(testMaps(prim, verb))
     print('\nTesting Kruskal\n')
     print(testMaps(kruskal, verb))
