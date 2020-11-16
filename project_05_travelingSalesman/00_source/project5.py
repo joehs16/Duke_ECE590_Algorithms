@@ -139,23 +139,37 @@ def tsp(adjList, start):
      ##### Your implementation goes here. #####
     for ver in adjList:
         ver.visited = False
+
+    #initialize list to track path of traveling salesman
     tour = []
+
+    #initalize stack for DFS
     stack = []
+
+    #put root vertex into stack
     stack.append(start)
 
     while len(stack) != 0:
+        #work on current vertex
         cur = stack.pop()
 
+        #condition to work through the stack
         if cur.visited == False:
+            #mark vertex as visited
             cur.visited = True
 
+            #add the current vertex to the path of the traveling salesman
             tour.append(cur.rank)
+
+            #consider all of the neighbors of the current vertex and add them/
+            #to the stack to determine where the salesman goes to next, i.e. DFS
+            #note that although duplicate neighbors will be added to the stack,
+            #the while condition will skip over them becuase they will already
+            #be marked visited, so using the triangle principles, shortcuts will
+            #be generated, returning a tour path of <2*MST
             for neighbor in cur.mstN:
                 stack.append(neighbor)
-            #     print('>>current vertex: ', cur)
-            #     print('>>neighbors: ', neighbor, 'rank', neighbor.rank)
-            #     print('>>stack: ', stack)
-            # print('>>tour: ', tour)
+
     tour.append(start.rank)
     return tour
 
