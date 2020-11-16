@@ -142,7 +142,6 @@ def tsp(adjList, start):
 
     #initialize list to track path of traveling salesman
     tour = []
-
     #initalize stack for DFS
     stack = []
 
