@@ -3,9 +3,9 @@ Math 560
 Project 5
 Fall 2020
 
-Partner 1:
-Partner 2:
-Date:
+Partner 1: Joe Hsieh, jch122
+Partner 2: Sutianyi Wen, sw490
+Date: Nov 19, 2020
 """
 
 # Import math, itertools, and time.
@@ -22,20 +22,25 @@ from p5priorityQueue import *
 Prim's Algorithm
 """
 def prim(adjList, adjMat):
-    ##### Your implementation goes here. #####
+    # Initialize all costs to inf and prev to null
     for ver in adjList:
         ver.cost = math.inf
         ver.prev = None
         ver.visited = False
-    # Pick an arbitrary vertex
+    # Pick an arbitrary vertex and set cost to 0/
     start = adjList[2]
     start.cost = 0
-    # Make priority queue
+    # Make priority queue using cost for sorting
     Q = PriorityQueue(adjList)
     while not Q.isEmpty():
+        # Get the next unvisited vertex and visit it.
         cur = Q.deleteMin()
         cur.visited=True
+
+        # For each edge out of current vertex
         for neighbor in cur.neigh:
+
+            #if the edge leads out, update.
             if not neighbor.visited:
                 if neighbor.cost > adjMat[cur.rank][neighbor.rank]:
                     neighbor.cost = adjMat[cur.rank][neighbor.rank]
@@ -50,11 +55,15 @@ Note: the edgeList is ALREADY SORTED!
 Note: Use the isEqual method of the Vertex class when comparing vertices.
 """
 def kruskal(adjList, edgeList):
-    ##### Your implementation goes here. #####
+    # Initialize all singleton sets for each vertex
     for ver in adjList:
         makeset(ver)
+    # Initialize the empty MST
     X = []
+
+    # Loop through the edges in increasing order
     for edge in edgeList:
+        # If the min edge crosses a cut, add it to MST
         u,v = edge.vertices[0],edge.vertices[1]
         if find(u) != find(v):
             X.append(edge)
@@ -76,7 +85,7 @@ These functions will operate directly on the input vertex objects.
 makeset: this function will create a singleton set with root v.
 """
 def makeset(v):
-    ##### Your implementation goes here. #####
+    # Create a singleton set containing vertex v
     v.pi = v
     v.height = 0
 
@@ -86,7 +95,7 @@ Note: we will use path compression here.
 
 """
 def find(v):
-    ##### Your implementation goes here. #####
+    # find which set vertex v belongs to (used for finding cuts)
     if v!= v.pi:
         #set our parent to be the root
         v.pi = find(v.pi)
@@ -96,7 +105,7 @@ def find(v):
 union: this function will union the sets of vertices v and u.
 """
 def union(u,v):
-    ##### Your implementation goes here. #####
+    # merge the sets containing vertices u and v
     ru = find(u)
     rv = find(v)
     if ru == rv:
@@ -117,26 +126,9 @@ def union(u,v):
 """
 TSP
 """
-# def tsp(adjList, start):
-#     ##### Your implementation goes here. #####
-#     for ver in adjList:
-#         ver.visited = False
-#     tour = []
-#     stack = []
-#     tour.append(start.rank)
-#     stack.append(start)
-#     while not len(tour)!= 0:
-#         cur = stack.pop()
-#         for neighbor in cur.mstN:
-#             if neighbor.visited==False:
-#                 stack.append(neighbor)
-#                 tour.append(neighbor.rank)
-#                 neighbor.visited=True
-#     tour.append(start.rank)
-#     return tour
 
 def tsp(adjList, start):
-     ##### Your implementation goes here. #####
+    # reset all vertices to unvisited
     for ver in adjList:
         ver.visited = False
 
